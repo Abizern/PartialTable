@@ -79,10 +79,10 @@
 			children = (
 				EE23A06913C5E7AC000F9CFE /* AppDelegate.h */,
 				EE23A06A13C5E7AC000F9CFE /* AppDelegate.m */,
-				EE23A06C13C5E7AC000F9CFE /* MainWindow.xib */,
-				EE23A06113C5E7AC000F9CFE /* Supporting Files */,
 				EEB449ED13C5FAD900823893 /* TableViewController.h */,
 				EEB449EE13C5FAD900823893 /* TableViewController.m */,
+				EE23A06C13C5E7AC000F9CFE /* MainWindow.xib */,
+				EE23A06113C5E7AC000F9CFE /* Supporting Files */,
 			);
 			path = PartialTable;
 			sourceTree = "<group>";

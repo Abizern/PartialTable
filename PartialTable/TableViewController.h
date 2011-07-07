@@ -8,8 +8,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TableViewController : UITableViewController {
-    
-}
+@interface TableViewController : UITableViewController {}
+
+@property (nonatomic, copy) NSArray *items;
 
 @end
