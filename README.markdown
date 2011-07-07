@@ -2,7 +2,17 @@
 
 ##Description
 
-An example iOS project to show how to load a subset of data in a table view with a "Display More" button as the last cell which loads more data into the table.
+An example iOS project to show how to load a subset of data in a table view with a "Display More" button loads more data into the table.
+
+Currently, this is achieved by having a single cell in a second section and loading more data from there.
+
+This is meant to be very simple. A concrete example of the concept.
+
+##Acknowledgements
+
+- Daniel Thorpe for building on my idea.
+- Pete Calloway for gentle nudging.
+- The usual Twitter mob for looking at this.
 
 ##Requirements
 
