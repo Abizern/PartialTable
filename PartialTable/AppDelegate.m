@@ -5,7 +5,7 @@
 //  Created by Abizer Nasir on 07/07/2011.
 //
 
-
+static NSUInteger kNumberOfItems = 35;
 
 #import "AppDelegate.h"
 #import "TableViewController.h"
@@ -19,9 +19,9 @@ NSString *randomString();
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Create 30 items of random data to display in the table view.
-    NSMutableArray *itemsArray = [[NSMutableArray alloc] initWithCapacity:30];
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] initWithCapacity:kNumberOfItems];
     
-    for (NSUInteger idx = 0; idx < 30; idx++) {
+    for (NSUInteger idx = 0; idx < kNumberOfItems; idx++) {
         [itemsArray addObject:randomString()];
     }
     
