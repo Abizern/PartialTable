@@ -7,7 +7,7 @@
 
 #import "TableViewController.h"
 
-#define kNumberOfItemsToAdd 9
+#define kNumberOfItemsToAdd 8
 
 @implementation TableViewController
 
@@ -18,7 +18,7 @@
 
 - (id)init  {
 	// New designated initialiser
-    if (!(self = [super initWithStyle:UITableViewStylePlain])) {
+    if (!(self = [super initWithStyle:UITableViewStyleGrouped])) {
         return nil; // Bail!
     }
     numberOfItemsToDisplay = kNumberOfItemsToAdd; // Show 10 items at startup
@@ -46,16 +46,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (numberOfItemsToDisplay == [items count]) {
+        return 1;
+    }
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (numberOfItemsToDisplay < [items count]) {
-        return numberOfItemsToDisplay + 1;
-    } else {
+    if (section == 0) {
         return numberOfItemsToDisplay;
+    } else {
+        return 1;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,45 +66,58 @@
     // If the indexPath is less than the numberOfItemsToDisplay, configure and return a normal cell,
     // otherwise, replace it with a button cell.
     
-    NSUInteger indexPathRow = [indexPath row];
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if (indexPathRow < numberOfItemsToDisplay) {            
-        cell.textLabel.text = [items objectAtIndex:[indexPath row]];
+    if (indexPath.section == 0) {            
+        cell.textLabel.text = [items objectAtIndex:indexPath.row];
         cell.textLabel.textAlignment = UITextAlignmentLeft;        
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:17.f];
+        
     } else {
         cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Next %d items", @"The text to display to load more content"), kNumberOfItemsToAdd];
-        cell.textLabel.textAlignment = UITextAlignmentRight;
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.textLabel.textColor = [UIColor colorWithRed:0.196f green:0.3098f blue:0.52f alpha:1.f];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14.f];
     }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == numberOfItemsToDisplay) {
+    if (indexPath.section == 1) {
         NSUInteger i, totalNumberOfItems = [items count];        
         NSUInteger newNumberOfItemsToDisplay = MIN(totalNumberOfItems, numberOfItemsToDisplay + kNumberOfItemsToAdd);
         NSMutableArray *indexPaths = [[NSMutableArray alloc] init];        
         
-        for (i=numberOfItemsToDisplay+1; i<newNumberOfItemsToDisplay; i++) {
-            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:indexPath.section]];
+        for (i=numberOfItemsToDisplay; i<newNumberOfItemsToDisplay; i++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         }        
         
-        [tableView beginUpdates];
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        if (newNumberOfItemsToDisplay < totalNumberOfItems)
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];            
-        numberOfItemsToDisplay = newNumberOfItemsToDisplay;
-        [tableView endUpdates];        
-        [indexPaths release];        
+        numberOfItemsToDisplay = newNumberOfItemsToDisplay;                
         
+        [tableView beginUpdates];
+        [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+        [indexPaths release];                
+        if (numberOfItemsToDisplay == totalNumberOfItems) {
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
+        }        
+        [tableView endUpdates];
         // Scroll the cell to the top of the table
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if (newNumberOfItemsToDisplay < totalNumberOfItems) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 200000000), dispatch_get_main_queue(), ^(void){
+                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            });
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        } else {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 200000000), dispatch_get_main_queue(), ^(void){
+                [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalNumberOfItems-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            });
+        }
+        
     }    
 }
 
