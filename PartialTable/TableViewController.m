@@ -7,6 +7,12 @@
 
 #import "TableViewController.h"
 
+@interface TableViewController ()
+
+- (void)increaseNumberOfItemsToDisplay;
+
+@end
+
 
 @implementation TableViewController
 
@@ -20,7 +26,7 @@
     if (!(self = [super initWithStyle:UITableViewStylePlain])) {
         return nil; // Bail!
     }
-    
+    numberOfItemsToDisplay = 10; // Show 10 items at startup
     return self;
 }
 
@@ -49,7 +55,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [items count];
+    return numberOfItemsToDisplay;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,17 +71,17 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
+// Mark: -
+// Mark: Class extension methods
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+- (void)increaseNumberOfItemsToDisplay {
+    NSUInteger totalNumberOfItems = [items count];
+    
+    if (numberOfItemsToDisplay < (totalNumberOfItems - 10)) {
+        numberOfItemsToDisplay += 10;
+    } else {
+        numberOfItemsToDisplay = totalNumberOfItems;
+    }
 }
 
 @end

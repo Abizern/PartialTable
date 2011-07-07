@@ -8,7 +8,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TableViewController : UITableViewController {}
+@interface TableViewController : UITableViewController {
+@private
+    NSUInteger numberOfItemsToDisplay;
+}
 
 @property (nonatomic, copy) NSArray *items;
 
