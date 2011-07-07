@@ -55,18 +55,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return numberOfItemsToDisplay;
+    return numberOfItemsToDisplay + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ItemCell";
+    static NSString *ButtonIdentifier = @"ButtonIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    // If the indexPath is less than the numberOfItemsToDisplay, configure and return a normal cell,
+    // otherwise, replace it with a button cell.
+    
+    NSUInteger indexPathRow = [indexPath row];
+    UITableViewCell *cell;
+    
+    if (indexPathRow < numberOfItemsToDisplay) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!cell) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        
+        cell.textLabel.text = [items objectAtIndex:[indexPath row]];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:ButtonIdentifier];
+        if (!cell) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ButtonIdentifier] autorelease];
+            
+            UIButton *cellButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            cellButton.frame = cell.bounds;
+            [cellButton setTitle:@"Next 10 items…" forState:UIControlStateNormal];
+            
+            [cell addSubview:cellButton];
+        }
     }
-    
-    cell.textLabel.text = [items objectAtIndex:[indexPath row]];
     
     return cell;
 }
