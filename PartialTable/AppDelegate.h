@@ -7,8 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : NSObject <UIApplicationDelegate> {
+@class TableViewController;
 
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
+    TableViewController *tableViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

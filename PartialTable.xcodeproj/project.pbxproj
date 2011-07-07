@@ -14,6 +14,7 @@
 		EE23A06813C5E7AC000F9CFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE23A06713C5E7AC000F9CFE /* main.m */; };
 		EE23A06B13C5E7AC000F9CFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE23A06A13C5E7AC000F9CFE /* AppDelegate.m */; };
 		EE23A06E13C5E7AC000F9CFE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE23A06C13C5E7AC000F9CFE /* MainWindow.xib */; };
+		EEB449EF13C5FAD900823893 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB449EE13C5FAD900823893 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		EE23A06913C5E7AC000F9CFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EE23A06A13C5E7AC000F9CFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EE23A06D13C5E7AC000F9CFE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		EEB449ED13C5FAD900823893 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		EEB449EE13C5FAD900823893 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				EE23A06A13C5E7AC000F9CFE /* AppDelegate.m */,
 				EE23A06C13C5E7AC000F9CFE /* MainWindow.xib */,
 				EE23A06113C5E7AC000F9CFE /* Supporting Files */,
+				EEB449ED13C5FAD900823893 /* TableViewController.h */,
+				EEB449EE13C5FAD900823893 /* TableViewController.m */,
 			);
 			path = PartialTable;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			files = (
 				EE23A06813C5E7AC000F9CFE /* main.m in Sources */,
 				EE23A06B13C5E7AC000F9CFE /* AppDelegate.m in Sources */,
+				EEB449EF13C5FAD900823893 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +269,7 @@
 				EE23A07313C5E7AC000F9CFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

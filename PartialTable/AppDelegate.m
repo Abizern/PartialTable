@@ -8,6 +8,7 @@
 
 
 #import "AppDelegate.h"
+#import "TableViewController.h"
 
 NSString *randomString();
 
@@ -17,13 +18,15 @@ NSString *randomString();
 @synthesize window=_window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    tableViewController = [[TableViewController alloc] init];
+    [self.window setRootViewController:tableViewController];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void)dealloc {
+    [tableViewController release];
     [_window release];
     [super dealloc];
 }
