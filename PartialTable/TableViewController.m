@@ -55,7 +55,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return numberOfItemsToDisplay + 1;
+    if (numberOfItemsToDisplay < [items count]) {
+        return numberOfItemsToDisplay + 1;
+    } else {
+        return numberOfItemsToDisplay;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,11 +89,21 @@
             cellButton.frame = cell.bounds;
             [cellButton setTitle:@"Next 10 items…" forState:UIControlStateNormal];
             
+            [cellButton addTarget:self action:@selector(showMoreItems:) forControlEvents:UIControlEventTouchUpInside];
+            
             [cell addSubview:cellButton];
         }
     }
     
     return cell;
+}
+
+// Mark: -
+// Mark: Action methods
+
+- (IBAction)showMoreItems:(id)sender {
+    [self increaseNumberOfItemsToDisplay];
+    [self.tableView reloadData];
 }
 
 // Mark: -
