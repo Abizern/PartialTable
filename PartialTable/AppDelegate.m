@@ -18,7 +18,16 @@ NSString *randomString();
 @synthesize window=_window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Create 30 items of random data to display in the table view.
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] initWithCapacity:30];
+    
+    for (NSUInteger idx = 0; idx < 30; idx++) {
+        [itemsArray addObject:randomString()];
+    }
+    
     tableViewController = [[TableViewController alloc] init];
+    tableViewController.items = itemsArray, [itemsArray release];
+    
     [self.window setRootViewController:tableViewController];
     
     [self.window makeKeyAndVisible];
