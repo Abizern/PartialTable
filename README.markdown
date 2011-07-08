@@ -11,7 +11,7 @@ This is meant to be very simple. A concrete example of the concept.
 ##Acknowledgements
 
 - Daniel Thorpe for building on my idea.
-- Pete Calloway for gentle nudging.
+- Pete Callaway for gentle nudging.
 - The usual Twitter mob for looking at this.
 
 ##Requirements
