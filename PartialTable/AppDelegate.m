@@ -26,7 +26,7 @@ NSString *randomString();
     }
     
     tableViewController = [[TableViewController alloc] init];
-    tableViewController.items = itemsArray, [itemsArray release];
+    tableViewController.items = itemsArray;
     
     [self.window setRootViewController:tableViewController];
     
@@ -34,11 +34,6 @@ NSString *randomString();
     return YES;
 }
 
-- (void)dealloc {
-    [tableViewController release];
-    [_window release];
-    [super dealloc];
-}
 
 // Mark: -
 // Mark: Convenience functions
@@ -49,10 +44,9 @@ NSString *randomString() {
     CFStringRef uuidStringRef = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
         
     NSRange aRange = NSMakeRange(0, 13); // Substring to the second hyphen
-    NSString *randomString = [(NSString *)uuidStringRef substringWithRange:aRange];
+    NSString *randomString = [(__bridge_transfer NSString *)uuidStringRef substringWithRange:aRange];
     
     CFRelease(uuidRef);
-    CFRelease(uuidStringRef);
     
     return randomString;
 }

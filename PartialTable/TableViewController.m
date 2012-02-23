@@ -31,10 +31,6 @@
     return [self init];
 }
 
-- (void)dealloc {
-    [items release];
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
@@ -68,7 +64,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     if (indexPath.section == 0) {            
@@ -101,7 +97,6 @@
         
         [tableView beginUpdates];
         [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        [indexPaths release];                
         if (numberOfItemsToDisplay == totalNumberOfItems) {
             [tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
         }        
