@@ -101,17 +101,22 @@
             [tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
         }        
         [tableView endUpdates];
+        
         // Scroll the cell to the top of the table
+        
+        NSIndexPath *scrollPointIndexPath;
+        
         if (newNumberOfItemsToDisplay < totalNumberOfItems) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 200000000), dispatch_get_main_queue(), ^(void){
-                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            });
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            scrollPointIndexPath = indexPath;
         } else {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 200000000), dispatch_get_main_queue(), ^(void){
-                [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalNumberOfItems-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            });
+            scrollPointIndexPath = [NSIndexPath indexPathForRow:totalNumberOfItems-1 inSection:0];
         }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 200000000), dispatch_get_main_queue(), ^(void){
+            [tableView scrollToRowAtIndexPath:scrollPointIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        });
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     }    
 }
