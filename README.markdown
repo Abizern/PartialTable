@@ -16,7 +16,7 @@ This is meant to be very simple. A concrete example of the concept.
 
 ##Requirements
 
-- iOS 4.3
+- iOS 5.0+
 - Xcode 4
 
 ##MIT Licence.
