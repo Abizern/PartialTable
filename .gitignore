@@ -9,18 +9,3 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
-
-# Generated files
-*.[oa]
-*.pyc
-*.6
-6.out
-
-#Python modules
-MANIFEST
-dist/
-build/
-
-# Backup files
-*~.nib
-\#*#
