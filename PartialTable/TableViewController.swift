@@ -10,8 +10,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     private let numberOfItems: Int = 40
-    private let cellIdentifier = "ItemCell"
     private var numberOfItemsToDisplay: Int = 10
+    private var numberOfItemsToAdd: Int = 10
     
     lazy private var items: [String] = {
         var list = [String]()
@@ -46,7 +46,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifierForIndexPath(indexPath), forIndexPath: indexPath) as UITableViewCell
         
         switch indexPath.section {
         case 0:
@@ -65,7 +65,49 @@ class TableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 1:
+            let newNumberOfItemsToDisplay = min(numberOfItemsToDisplay + numberOfItemsToAdd, numberOfItems)
+            var newIndexPaths = [NSIndexPath]()
+            for n in numberOfItemsToDisplay ..< newNumberOfItemsToDisplay  {
+                newIndexPaths.append(NSIndexPath(forRow: n, inSection: 0))
+            }
+            numberOfItemsToDisplay = newNumberOfItemsToDisplay
+            
+            tableView.beginUpdates()
+            
+            tableView.insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: .Top)
+            if numberOfItemsToDisplay == numberOfItems {
+                tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: .Top)
+            }
+            
+            tableView.endUpdates()
+            
+            var scrollPointIndexPath: NSIndexPath
+            
+            if numberOfItemsToDisplay < numberOfItems {
+                scrollPointIndexPath = indexPath
+            } else {
+                scrollPointIndexPath = NSIndexPath(forRow: numberOfItems - 1, inSection: 0)
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                () -> Void in
+                tableView.scrollToRowAtIndexPath(scrollPointIndexPath, atScrollPosition: .Top, animated: true)
+            }
+            return
+            
+        default:
+            return
+        }
+    }
+    
+    func cellIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
+        return "ItemCell"
+    }
+    
     func shouldDisplayMoreButton() -> Bool {
-        return numberOfItemsToDisplay <= numberOfItems
+        return numberOfItemsToDisplay < numberOfItems
     }
 }
