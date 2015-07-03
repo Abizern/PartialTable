@@ -22,8 +22,8 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let section = indexPath.section
-        switch section {
+        switch indexPath.section {
+        
         case 1:
             let numberOfItems = tableDataSource.tableView(tableView, numberOfRowsInSection: 0)
             tableDataSource.getMoreItems()
@@ -45,7 +45,7 @@ class TableViewController: UITableViewController {
 
             tableView.endUpdates()
             
-            var scrollPointIndexPath: NSIndexPath
+            let scrollPointIndexPath: NSIndexPath
             
             if shouldHaveMoreButton {
                 scrollPointIndexPath = indexPath
@@ -53,13 +53,13 @@ class TableViewController: UITableViewController {
                 scrollPointIndexPath = NSIndexPath(forRow: numberOfItems - 1, inSection: 0)
             }
             
-            dispatch_async(dispatch_get_main_queue()) {
-                () -> Void in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 tableView.scrollToRowAtIndexPath(scrollPointIndexPath, atScrollPosition: .Top, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
-                }
+                
+                guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+                tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
             }
+            
             return
             
         default:
