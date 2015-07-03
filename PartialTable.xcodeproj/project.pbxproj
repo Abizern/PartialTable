@@ -67,11 +67,11 @@
 				ADA7A0991A87C17900FA285B /* Item.swift */,
 				ADA7A0951A87BE9800FA285B /* ItemCell.swift */,
 				ADA7A0971A87BEAC00FA285B /* MoreCell.swift */,
+				AD09D6C21AA0750300FBFCBC /* DataSource.swift */,
 				ADA7A0751A86949A00FA285B /* Main.storyboard */,
 				ADA7A0781A86949A00FA285B /* Images.xcassets */,
 				ADA7A07A1A86949A00FA285B /* LaunchScreen.xib */,
 				ADA7A06F1A86949A00FA285B /* Supporting Files */,
-				AD09D6C21AA0750300FBFCBC /* DataSource.swift */,
 			);
 			path = PartialTable;
 			sourceTree = "<group>";

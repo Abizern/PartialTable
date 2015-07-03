@@ -9,6 +9,7 @@
 import UIKit
 
 class DataSource: NSObject, UITableViewDataSource {
+    
     private let maximumNumberOfItems = 40
     private let numberOfItemsToAdd = 10
     private var numberOfItems = 10
@@ -22,9 +23,11 @@ class DataSource: NSObject, UITableViewDataSource {
         return list
     }()
     
+    
     func getMoreItems() -> () {
         numberOfItems = min(numberOfItems + numberOfItemsToAdd, maximumNumberOfItems)
     }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (numberOfItems < maximumNumberOfItems) {
@@ -33,6 +36,7 @@ class DataSource: NSObject, UITableViewDataSource {
             return 1
         }
     }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -44,6 +48,7 @@ class DataSource: NSObject, UITableViewDataSource {
             return 0
         }
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {

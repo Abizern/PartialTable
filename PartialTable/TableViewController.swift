@@ -9,11 +9,9 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-    private var tableDataSource = DataSource()
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    private var tableDataSource = DataSource()
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,12 +20,14 @@ class TableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
         switch section {
         case 1:
             let numberOfItems = tableDataSource.tableView(tableView, numberOfRowsInSection: 0)
             tableDataSource.getMoreItems()
+            
             let newNumberOfItems = tableDataSource.tableView(tableView, numberOfRowsInSection: 0)
             let shouldHaveMoreButton = tableDataSource.numberOfSectionsInTableView(tableView) == 2
             var newIndexPaths = [NSIndexPath]()

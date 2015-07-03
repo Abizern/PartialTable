@@ -8,16 +8,17 @@
 
 import UIKit
 
+private let CellIdentifier = "ItemCell"
+
 class ItemCell: UITableViewCell {
+    
     @IBOutlet private weak var label: UILabel!
     
-    private struct Static {
-        static let identifier = "ItemCell"
-    }
     
     class var cellIdentifier: String {
-        return Static.identifier
+        return CellIdentifier
     }
+    
     
     func configureWithItem(item: Item) -> () {
         label.text = item.value
