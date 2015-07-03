@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 () -> Void in
                 tableView.scrollToRowAtIndexPath(scrollPointIndexPath, atScrollPosition: .Top, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow() {
+                if let selectedIndexPath = tableView.indexPathForSelectedRow {
                     tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
                 }
             }
