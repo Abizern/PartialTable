@@ -8,18 +8,12 @@
 
 import UIKit
 
-private let CellIdentifier = "ItemCell"
-
 class ItemCell: UITableViewCell {
-    
+
     @IBOutlet private weak var label: UILabel!
-    
-    
-    class var cellIdentifier: String {
-        return CellIdentifier
-    }
-    
-    
+
+    static let reuseIdentifier = "ItemCell"
+
     func configureWithItem(item: Item) -> () {
         label.text = item.value
     }

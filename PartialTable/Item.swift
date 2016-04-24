@@ -6,7 +6,10 @@
 //  Copyright (c) 2015 Jungle Candy Software Ltd. All rights reserved.
 //
 
-struct Item {
-    
+struct Item: Equatable {
     let value: String
+}
+
+func == (lhs: Item, rhs: Item) -> Bool {
+    return lhs.value == rhs.value
 }
