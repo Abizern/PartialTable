@@ -14,7 +14,7 @@ class ItemCell: UITableViewCell {
 
     static let reuseIdentifier = "ItemCell"
 
-    func configureWithItem(item: Item) -> () {
+    func configureWith(_ item: Item) -> () {
         label.text = item.value
     }
 }

@@ -17,7 +17,7 @@ class DataSource: NSObject, UITableViewDataSource {
     lazy private var items: [Item] = {
         var list = [Item]()
         for _ in 0 ..< self.maximumNumberOfItems {
-            list.append(Item(value: NSUUID().UUIDString))
+            list.append(Item(value: UUID().uuidString))
         }
 
         return list
@@ -29,7 +29,7 @@ class DataSource: NSObject, UITableViewDataSource {
     }
 
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         switch (numberOfItems < maximumNumberOfItems) {
         case true:
             return 2
@@ -39,7 +39,7 @@ class DataSource: NSObject, UITableViewDataSource {
     }
 
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return numberOfItems
@@ -51,14 +51,14 @@ class DataSource: NSObject, UITableViewDataSource {
     }
 
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(ItemCell.reuseIdentifier, forIndexPath: indexPath) as! ItemCell
-            cell.configureWithItem(items[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+            cell.configureWith(items[indexPath.row])
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(MoreCell.reuseIdentifier, forIndexPath: indexPath) as! MoreCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: MoreCell.reuseIdentifier, for: indexPath) as! MoreCell
             return cell
         }
     }
