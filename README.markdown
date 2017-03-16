@@ -1,6 +1,6 @@
-#Partial Table
+# Partial Table
 
-##Description
+## Description
 
 An example iOS project to show how to load a subset of data in a table view with
 a "Display More" button loads more data into the table.
@@ -11,23 +11,29 @@ Currently, this is achieved by having a single cell in a second section and load
 
 This is meant to be very simple. A concrete example of the concept.
 
-##Acknowledgements
+## Acknowledgements
 
 - Daniel Thorpe for building on my idea.
 - Pete Callaway for gentle nudging.
 - The usual Twitter mob for looking at this.
 
-##Requirements
+## Requirements
+
+### Swift 3.0
+- iOS 10+
+- Xcode 8
+
+### Swift 2.2
+- iOS 9.0+
+- Xcode 7.3
+
+### Swift 2
+- iOS 9.0+
+- Xcode 7.0
 
 ### Swift and Objective-C
 - iOS 8.1+
 - Xcode 6.3
 
-### Swift 2
-- iOS 9.0+
-- Xcode 7.0 beta 2
 
-### Swift 2.2
-- iOS 9.0+
-- Xcode 7.3
 
