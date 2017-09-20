@@ -19,7 +19,13 @@ This is meant to be very simple. A concrete example of the concept.
 
 ## Requirements
 
-### Swift 3.0
+### Swift 4.0 (tag 4.0)
+- iOS 11
+- Xcode 9
+
+This rewrites in this version are more than just updating to the new Swift version, but also because I'm a better developer now than I was when I started this project and I do things a little differently now.
+
+### Swift 3.0 (tag 3.0)
 - iOS 10+
 - Xcode 8
 
