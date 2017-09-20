@@ -9,12 +9,17 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
-
-    @IBOutlet private weak var label: UILabel!
+    @IBOutlet private var label: UILabel!
 
     static let reuseIdentifier = "ItemCell"
+    
+    func configure(with string: String) {
+        label.text = string
+    }
+}
 
-    func configureWith(_ item: Item) -> () {
-        label.text = item.value
+extension ItemCell {
+    func configure(with item: Item) -> () {
+        configure(with: item.value)
     }
 }

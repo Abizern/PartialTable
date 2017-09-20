@@ -55,7 +55,7 @@ class DataSource: NSObject, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
-            cell.configureWith(items[indexPath.row])
+            cell.configure(with: items[indexPath.row])
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MoreCell.reuseIdentifier, for: indexPath) as! MoreCell
