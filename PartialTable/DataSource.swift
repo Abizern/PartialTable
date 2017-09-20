@@ -15,19 +15,17 @@ class DataSource: NSObject, UITableViewDataSource {
     private var numberOfItems = 10
 
     lazy private var items: [Item] = {
-        var list = [Item]()
-        for _ in 0 ..< self.maximumNumberOfItems {
-            list.append(Item(value: UUID().uuidString))
+        let iterator = AnyIterator {
+            return Item(value: UUID().uuidString)
         }
-
-        return list
+        
+        return Array(iterator.prefix(maximumNumberOfItems))
     }()
 
 
     func getMoreItems() {
         numberOfItems = min(numberOfItems + numberOfItemsToAdd, maximumNumberOfItems)
     }
-
 
     func numberOfSections(in tableView: UITableView) -> Int {
         switch (numberOfItems < maximumNumberOfItems) {
@@ -37,7 +35,6 @@ class DataSource: NSObject, UITableViewDataSource {
             return 1
         }
     }
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -49,7 +46,6 @@ class DataSource: NSObject, UITableViewDataSource {
             return 0
         }
     }
-
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
