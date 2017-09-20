@@ -8,8 +8,9 @@
 
 struct Item: Equatable {
     let value: String
+    
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        return lhs.value == rhs.value
+    }
 }
 
-func == (lhs: Item, rhs: Item) -> Bool {
-    return lhs.value == rhs.value
-}
