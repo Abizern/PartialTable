@@ -32,25 +32,15 @@ class TableViewController: UITableViewController {
             IndexPath(row: n, section: 0)
         }
         
-        tableView.beginUpdates()
-        
-        tableView.insertRows(at: newIndexPaths, with: .top)
-        
-        if !shouldHaveMoreButton {
-            tableView.deleteSections(IndexSet(integer: 1), with: .top)
-        }
-        
-        tableView.endUpdates()
-        
-        let scrollPointIndexPath: IndexPath
-        
-        if shouldHaveMoreButton {
-            scrollPointIndexPath = indexPath
-        } else {
-            scrollPointIndexPath = IndexPath(row: numberOfItems - 1, section: 0)
-        }
-        
-        DispatchQueue.main.async { () -> Void in
+        tableView.performBatchUpdates({
+            tableView.insertRows(at: newIndexPaths, with: .top)
+            
+            if !shouldHaveMoreButton {
+                tableView.deleteSections(IndexSet(integer: 1), with: .top)
+            }
+        }) { _ in
+            let scrollPointIndexPath = shouldHaveMoreButton ? indexPath : IndexPath(row: numberOfItems - 1, section: 0)
+            
             tableView.scrollToRow(at: scrollPointIndexPath, at: .top, animated: true)
             
             guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }

@@ -19,8 +19,14 @@ This is meant to be very simple. A concrete example of the concept.
 
 ## Requirements
 
-### Swift 4.0 (tag 4.0)
+### Swift 4.0 (tag 4.1)
 - iOS 11
+- Xcode 9
+
+This uses the new iOS 11 UITableViewMethod `performBatchUpdates` to update the tableview.
+
+### Swift 4.0 (tag 4.0)
+- iOS 10
 - Xcode 9
 
 This rewrites in this version are more than just updating to the new Swift version, but also because I'm a better developer now than I was when I started this project and I do things a little differently now.
