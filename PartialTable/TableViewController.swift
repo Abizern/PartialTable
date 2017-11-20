@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+final class TableViewController: UITableViewController {
     
-    fileprivate var tableDataSource = DataSource()
+    private var tableDataSource = DataSource()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

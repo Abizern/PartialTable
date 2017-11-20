@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataSource: NSObject, UITableViewDataSource {
+final class DataSource: NSObject, UITableViewDataSource {
 
     private let maximumNumberOfItems = 40
     private let numberOfItemsToAdd = 10

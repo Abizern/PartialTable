@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreCell: UITableViewCell {
+final class MoreCell: UITableViewCell {
     @IBOutlet private var label: UILabel!
 
     static let reuseIdentifier = "MoreCell"
