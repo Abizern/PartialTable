@@ -19,6 +19,10 @@ This is meant to be very simple. A concrete example of the concept.
 
 ## Requirements
 
+### Swift 4.2 (tag 5.0)
+- iOS 12
+- Xcode 10
+
 ### Swift 4.0 (tag 4.1)
 - iOS 11
 - Xcode 9
