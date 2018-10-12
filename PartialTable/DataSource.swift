@@ -28,12 +28,7 @@ final class DataSource: NSObject, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch (numberOfItems < maximumNumberOfItems) {
-        case true:
-            return 2
-        case false:
-            return 1
-        }
+        return (numberOfItems < maximumNumberOfItems) ? 2 : 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

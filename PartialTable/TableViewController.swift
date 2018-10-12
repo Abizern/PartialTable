@@ -9,7 +9,6 @@
 import UIKit
 
 final class TableViewController: UITableViewController {
-    
     private var tableDataSource = DataSource()
     
     override func viewWillAppear(_ animated: Bool) {
