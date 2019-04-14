@@ -15,7 +15,7 @@ final class TableViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.dataSource = tableDataSource
         tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
