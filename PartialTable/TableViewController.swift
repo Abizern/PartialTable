@@ -27,9 +27,7 @@ final class TableViewController: UITableViewController {
         let newNumberOfItems = tableDataSource.tableView(tableView, numberOfRowsInSection: 0)
         let shouldHaveMoreButton = tableDataSource.numberOfSections(in: tableView) == 2
         
-        let newIndexPaths = Array(numberOfItems ..< newNumberOfItems).map { (n) -> IndexPath in
-            IndexPath(row: n, section: 0)
-        }
+        let newIndexPaths = Array(numberOfItems ..< newNumberOfItems).map{ IndexPath(row: $0, section: 0) }
         
         tableView.performBatchUpdates({
             tableView.insertRows(at: newIndexPaths, with: .top)
