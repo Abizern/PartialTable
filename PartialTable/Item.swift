@@ -9,4 +9,3 @@
 struct Item: Equatable {
     let value: String
 }
-
