@@ -14,6 +14,7 @@ final class DataSource: NSObject, UITableViewDataSource {
     private let numberOfItemsToAdd = 10
     private var numberOfItems = 10
 
+    // This just generates a list of Items that are just UUIDs
     lazy private var items: [Item] = {
         let iterator = AnyIterator {
             return Item(value: UUID().uuidString)
