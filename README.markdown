@@ -3,13 +3,15 @@
 ## Description
 
 An example iOS project to show how to load a subset of data in a table view with
-a "Display More" button loads more data into the table.
-
-There are tags for the Objective-C, Swift 1.2, 2.0 and 2.2 versions.
-
-Currently, this is achieved by having a single cell in a second section and loading more data from there.
+a "Display More** button loads more data into the table.
 
 This is meant to be very simple. A concrete example of the concept.
+
+**Updated for SwiftUI**
+
+There are tags for the Objective-C, and Swift versions. See the _Requirements_ section for details
+
+Currently, this is achieved by having a single cell in a second section and loading more data from there.
 
 ## Acknowledgements
 
@@ -19,27 +21,33 @@ This is meant to be very simple. A concrete example of the concept.
 
 ## Requirements
 
-### Swift 5.0 (tag 6.0)
+### 7.0: Swift 5.1 and SwiftUI
+- iOS 13
+- Xcode 11+
+
+This uses SwiftUI for the interface. To see live previews in Xcode you need to be running macOS Catalina.
+
+### 6.0: Swift 5.0
 - iOS 12
 - Xcode 10.2
 
-### Swift 4.2 (tag 5.0)
+### 5.0: Swift 4.2
 - iOS 12
 - Xcode 10
 
-### Swift 4.0 (tag 4.1)
+### 4.1: Swift 4.0
 - iOS 11
 - Xcode 9
 
 This uses the new iOS 11 UITableViewMethod `performBatchUpdates` to update the tableview.
 
-### Swift 4.0 (tag 4.0)
+### 4.0: Swift 4.0
 - iOS 10
 - Xcode 9
 
 This rewrites in this version are more than just updating to the new Swift version, but also because I'm a better developer now than I was when I started this project and I do things a little differently now.
 
-### Swift 3.0 (tag 3.0)
+### 3.0: Swift 3.0
 - iOS 10+
 - Xcode 8
 
