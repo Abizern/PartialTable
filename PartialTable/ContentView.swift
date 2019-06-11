@@ -9,9 +9,15 @@
 import SwiftUI
 
 struct ContentView : View {
+    private var items = DataSource().items
+
     var body: some View {
-        Text("Hello World")
+        List {
+            ForEach(items, content: ItemRow.init)
+            LoadMoreButton() { print("Load More Requested") }
+        }
     }
+
 }
 
 #if DEBUG

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD7D16A422AF55B400E99DE9 /* LoadMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D16A322AF55B400E99DE9 /* LoadMoreButton.swift */; };
+		ADE9C56022AF4DD1003CAC69 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE9C55F22AF4DD1003CAC69 /* ItemRow.swift */; };
 		ADF85A9A22AE969100A7D57D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF85A9922AE969100A7D57D /* AppDelegate.swift */; };
 		ADF85A9C22AE969100A7D57D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF85A9B22AE969100A7D57D /* SceneDelegate.swift */; };
 		ADF85A9E22AE969100A7D57D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF85A9D22AE969100A7D57D /* ContentView.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD7D16A322AF55B400E99DE9 /* LoadMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreButton.swift; sourceTree = "<group>"; };
+		ADE9C55F22AF4DD1003CAC69 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		ADF85A9622AE969100A7D57D /* PartialTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartialTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF85A9922AE969100A7D57D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADF85A9B22AE969100A7D57D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				ADF85A9922AE969100A7D57D /* AppDelegate.swift */,
 				ADF85A9B22AE969100A7D57D /* SceneDelegate.swift */,
 				ADF85A9D22AE969100A7D57D /* ContentView.swift */,
+				ADE9C55F22AF4DD1003CAC69 /* ItemRow.swift */,
+				AD7D16A322AF55B400E99DE9 /* LoadMoreButton.swift */,
 				ADF85A9F22AE969200A7D57D /* Assets.xcassets */,
 				ADF85AA422AE969200A7D57D /* LaunchScreen.storyboard */,
 				ADF85AA722AE969200A7D57D /* Info.plist */,
@@ -163,7 +169,9 @@
 				ADF85AAF22AEF2D100A7D57D /* Item.swift in Sources */,
 				ADF85A9A22AE969100A7D57D /* AppDelegate.swift in Sources */,
 				ADF85A9C22AE969100A7D57D /* SceneDelegate.swift in Sources */,
+				ADE9C56022AF4DD1003CAC69 /* ItemRow.swift in Sources */,
 				ADF85AB122AF13EA00A7D57D /* DataSource.swift in Sources */,
+				AD7D16A422AF55B400E99DE9 /* LoadMoreButton.swift in Sources */,
 				ADF85A9E22AE969100A7D57D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

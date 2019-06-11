@@ -12,8 +12,6 @@ final class DataSource {
     let items: [Item]
 
     init() {
-        items = [1...10].map { value in
-            return Item("Item nr \(value)")
-        }
+        items = (1...10).map { Item(String(describing: $0)) }
     }
 }
