@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct ContentView : View {
-    private var items = DataSource().items
+    @EnvironmentObject private var dataSource: DataSource
 
     var body: some View {
         List {
-            ForEach(items, content: ItemRow.init)
-            LoadMoreButton() { print("Load More Requested") }
+            ForEach(dataSource.items, content: ItemRow.init)
+            if dataSource.hasMore {
+                LoadMoreButton() { self.dataSource.loadMore() }
+            }
         }
     }
 

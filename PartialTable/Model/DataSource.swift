@@ -6,12 +6,43 @@
 //  Copyright © 2019 Jungle Candy Software Ltd. All rights reserved.
 //
 
-import Foundation
+import Combine
+import SwiftUI
 
-final class DataSource {
-    let items: [Item]
+final class DataSource: BindableObject{
+    let didChange = PassthroughSubject<DataSource, Never>()
 
-    init() {
-        items = (1...10).map { Item(String(describing: $0)) }
+    var items: [Item] {
+        didSet {
+            hasMore = items.count < max
+            didChange.send(self)
+        }
+    }
+
+    var hasMore = true {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    
+    let max: Int
+    let batchSize: Int
+
+    init(initialNumberOfItems initial: Int = 10, maximumNumberOfItems maximum: Int = 40, batchSize: Int = 10) {
+        items = (1...initial).map { Item(String(describing: $0)) }
+        max = maximum > initial ? maximum : initial
+        self.batchSize = batchSize
+    }
+
+    func loadMore() {
+        let count = items.count
+        let start = count + 1
+        var end = items.count + batchSize
+        if end > max {
+            end = max
+        }
+
+        let new = (start...end).map { Item(String(describing: $0)) }
+        items = items + new
     }
 }
