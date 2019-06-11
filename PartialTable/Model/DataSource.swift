@@ -12,18 +12,13 @@ import SwiftUI
 final class DataSource: BindableObject{
     let didChange = PassthroughSubject<DataSource, Never>()
 
-    var items: [Item] {
+    private(set) var items: [Item] {
         didSet {
             hasMore = items.count < max
-            didChange.send(self)
         }
     }
 
-    var hasMore = true {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    private(set) var hasMore = true
     
     let max: Int
     let batchSize: Int
@@ -44,5 +39,7 @@ final class DataSource: BindableObject{
 
         let new = (start...end).map { Item(String(describing: $0)) }
         items = items + new
+        
+        didChange.send(self)
     }
 }

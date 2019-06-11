@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView : View {
-    @EnvironmentObject private var dataSource: DataSource
+    @ObjectBinding private var dataSource = DataSource()
 
     var body: some View {
         List {
