@@ -15,13 +15,11 @@ struct LoadMoreButton : View {
         self.action = action
     }
     var body: some View {
-        Button(action: action) {
-            HStack{
-                Spacer()
-                Text("Load More")
-                Spacer()
-            }
-        }
+        HStack {
+            Spacer()
+            Text("Load More")
+            Spacer()
+        }.tapAction(count: 1, action)
     }
 }
 
